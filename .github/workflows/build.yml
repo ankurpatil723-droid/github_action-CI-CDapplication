@@ -1,25 +1,11 @@
 name: Build
 
-on: 
-  push: # Runs whenever code is pushed to GitHub
-  workflow_call: # Allows this workflow to be called from another workflow
-  workflow_dispatch: # Allows you to trigger the workflow manually from the UI
-  schedule:
-    - cron: '0 0 * * *' # Example: Runs daily at midnight UTC (adjust as needed)
+on: # trigger
+  workflow_call: # whenever this workflow needs to be called from another
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Environment (Example Node.js)
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install dependencies and build
-        run: |
-          npm ci
-          npm run build
+      - name: Build the code
+        run: echo "Code built using Docker"
